@@ -25,10 +25,15 @@ app.use(methodOverride('_method'))
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+// morgan logger to log requests
 app.use(logger('dev'));
+// body parser to put body from incoming requests into req.body 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+// parse cookies into req.cookies
 app.use(cookieParser());
+// allow access to static files from public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes/index.js')(app);
