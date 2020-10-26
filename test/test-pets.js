@@ -28,12 +28,12 @@ describe('Pets', ()  => {
   // TEST INDEX
   it('should index ALL pets on / GET', (done) => {
     chai.request(server)
-        .get('/')
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.html;
-          done();
-        });
+      .get('/')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.html;
+        done();
+      });
   });
 
   // TEST NEW
@@ -116,5 +116,16 @@ describe('Pets', ()  => {
         done();
       });
     });
+  });
+
+  // SEARCH
+  it('should search ALL pets by name on /search GET', done => {
+    chai.request(server)
+      .get('/search?term=normal')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.html;
+        done();
+      });
   });
 });
